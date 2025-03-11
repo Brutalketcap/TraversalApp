@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BussinessLayer.Abstrack
 {
-    public interface ITestimonialService : IGenericService<Testimonial>
+    public interface ISubAboutService : IGenericService<SubAbout>
     {
     }
 }

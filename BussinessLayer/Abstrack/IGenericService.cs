@@ -11,7 +11,7 @@ namespace BussinessLayer.Abstrack
         void TAdd(T t);
         void TDelete(T t);
         void TUpdata(T t);
-        List<T> TGetList(T t);
+        List<T> TGetList();
         T TGetByID(int id);
 
     }
