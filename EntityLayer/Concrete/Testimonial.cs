@@ -14,5 +14,6 @@ namespace EntityLayer.Concrete
         public string Commnets { get; set; }
         public string ClientsImage { get; set; }
         public bool Status { get; set; }
+        public string Client { get; set; }
     }
 }
