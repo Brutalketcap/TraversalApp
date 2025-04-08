@@ -21,7 +21,7 @@ namespace BusinessLayer.Concrete
 
         public void TAdd(AppUser t)
         {
-            throw new NotImplementedException();
+            throw new NotImplementedException(); 
         }
 
         public void TDelete(AppUser t)
