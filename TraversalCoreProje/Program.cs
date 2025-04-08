@@ -1,5 +1,7 @@
 using BusinessLayer.Abstrack;
 using BusinessLayer.Concrete;
+using BussinessLayer.Abstrack;
+using BussinessLayer.Concrete;
 using DataAccessLayer.Abstract;
 using DataAccessLayer.Concrete;
 using DataAccessLayer.EntitiyFramwork;
@@ -26,7 +28,10 @@ namespace TraversalCoreProje
 
             builder.Services.AddScoped<ICommentService, CommentManager>();
             builder.Services.AddScoped<ICommentDal, EfCommentDal>();
-
+            builder.Services.AddScoped<IDestinationServce, DestinationManager>();
+            builder.Services.AddScoped<IDestinationDal, EfDestinationDal>();
+            builder.Services.AddScoped<IAppUserService, AppUserManager>();
+            builder.Services.AddScoped<IAppUserDal, EFAppUserDal>();
 
             builder.Services.AddControllersWithViews(opt =>
             {
@@ -82,7 +87,7 @@ namespace TraversalCoreProje
                 pattern: "{controller=Home}/{action=Index}/{id?}")
                 .WithStaticAssets();
 
-        app.Run();
+            app.Run();
         }
-}
+    }
 }
