@@ -1,4 +1,6 @@
-﻿using DataAccessLayer.Abstract;
+﻿using Microsoft.EntityFrameworkCore;
+using DataAccessLayer.Abstract;
+using DataAccessLayer.Concrete;
 using DataAccessLayer.Repository;
 using EntityLayer.Concrete;
 using System;
@@ -11,7 +13,12 @@ namespace DataAccessLayer.EntitiyFramwork
 {
     public class EfCommentDal : GenericRepository<Comment>, ICommentDal
     {
-
-
+        public List<Comment> GetListCommentWithDestination()
+        {
+            using(var c = new Context())
+            {
+                return c.Commnets.Include(x => x.Destination).ToList(); 
+            }   
+        }
     }
 }
