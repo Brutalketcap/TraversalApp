@@ -1,5 +1,6 @@
 using BusinessLayer.Abstrack;
 using BusinessLayer.Concrete;
+using BusinessLayer.Continer;
 using BussinessLayer.Abstrack;
 using BussinessLayer.Concrete;
 using DataAccessLayer.Abstract;
@@ -26,12 +27,9 @@ namespace TraversalCoreProje
             builder.Services.AddDbContext<Context>();
             builder.Services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<Context>().AddErrorDescriber<CustomIdentityValidator>().AddEntityFrameworkStores<Context>();
 
-            builder.Services.AddScoped<ICommentService, CommentManager>();
-            builder.Services.AddScoped<ICommentDal, EfCommentDal>();
-            builder.Services.AddScoped<IDestinationServce, DestinationManager>();
-            builder.Services.AddScoped<IDestinationDal, EfDestinationDal>();
-            builder.Services.AddScoped<IAppUserService, AppUserManager>();
-            builder.Services.AddScoped<IAppUserDal, EFAppUserDal>();
+
+            builder.Services.ContainerDependences();
+           
 
             builder.Services.AddControllersWithViews(opt =>
             {
@@ -71,14 +69,7 @@ namespace TraversalCoreProje
               pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
 
 
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllerRoute(
-                name: "areas",
-                pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
-                );
-            });
-
+            
 
 
 
