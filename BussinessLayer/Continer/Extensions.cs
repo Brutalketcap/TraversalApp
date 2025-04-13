@@ -17,14 +17,22 @@ namespace BusinessLayer.Continer
 {
     public static class Extensions
     {
-        public static void  ContainerDependences(this IServiceCollection services)
+        public static void ContainerDependences(this IServiceCollection services)
         {
             services.AddScoped<ICommentService, CommentManager>();
             services.AddScoped<ICommentDal, EfCommentDal>();
+
             services.AddScoped<IDestinationServce, DestinationManager>();
             services.AddScoped<IDestinationDal, EfDestinationDal>();
+
             services.AddScoped<IAppUserService, AppUserManager>();
             services.AddScoped<IAppUserDal, EFAppUserDal>();
+
+            services.AddScoped<IReservationService, ReservationManager>();
+            services.AddScoped<IReservationDal, EfReservationDal>();
+
+            services.AddScoped<IGuideService, GuideManager>();
+            services.AddScoped<IGuiedDal, EfGuideDal>();
         }
     }
 }

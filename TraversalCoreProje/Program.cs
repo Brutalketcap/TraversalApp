@@ -23,13 +23,21 @@ namespace TraversalCoreProje
         {
             var builder = WebApplication.CreateBuilder(args);
 
+            builder.Services.AddLogging(x =>
+            {
+
+                x.ClearProviders();
+                x.SetMinimumLevel(LogLevel.Debug);
+                x.AddDebug();
+            });
+
 
             builder.Services.AddDbContext<Context>();
-            builder.Services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<Context>().AddErrorDescriber<CustomIdentityValidator>().AddEntityFrameworkStores<Context>();
+            builder.Services.AddIdentity<AppUser, AppRole>().AddErrorDescriber<CustomIdentityValidator>().AddEntityFrameworkStores<Context>();
 
 
             builder.Services.ContainerDependences();
-           
+
 
             builder.Services.AddControllersWithViews(opt =>
             {
@@ -49,6 +57,14 @@ namespace TraversalCoreProje
                 app.UseHsts();
             }
 
+            void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)
+            {
+                
+                var path = Directory.GetCurrentDirectory();
+                loggerFactory.AddFile($"{path}\\Logs\\log1.txt");
+            }
+
+            app.UseStatusCodePagesWithReExecute("/ErrorPage/Error404/", "?code={0}");
             app.UseHttpsRedirection();
             app.UseRouting();
             app.UseAuthentication();
@@ -56,21 +72,10 @@ namespace TraversalCoreProje
 
             app.MapStaticAssets();
 
-            //app.UseEndpoints(endpoints =>
-            //{
-            //    endpoints.MapControllerRoute(
-            //        name: "areas",
-            //        pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
-            //    );
-            //});
 
             app.MapControllerRoute(
               name: "areas",
               pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
-
-
-            
-
 
 
             app.MapControllerRoute(
