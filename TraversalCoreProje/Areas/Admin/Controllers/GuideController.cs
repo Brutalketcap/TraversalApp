@@ -1,5 +1,5 @@
 ﻿using BusinessLayer.ValidationRules;
-using BussinessLayer.Abstrack;
+using BussinessLayer.Abstract;
 using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Mvc;
 using FluentValidation.Results;
@@ -27,7 +27,7 @@ namespace TraversalCoreProje.Areas.Admin.Controllers
         public IActionResult AddGuide()
         {
 
-            return View(new Guide());
+            return View();
             //var values = _guideService.TGetList();
             //return View(values);
         }

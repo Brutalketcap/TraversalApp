@@ -1,5 +1,5 @@
 ﻿using DataAccessLayer.Abstract;
-using BusinessLayer.Abstrack;
+using BusinessLayer.Abstract;
 using EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;

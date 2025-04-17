@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BussinessLayer.Abstrack
+namespace BussinessLayer.Abstract
 {
-    public interface IAbout2Service: IGenericService<About2>
+    public interface IContactServce : IGenericService<Contact>
     {
     }
 }

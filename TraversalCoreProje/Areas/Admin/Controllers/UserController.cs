@@ -1,4 +1,4 @@
-﻿using BusinessLayer.Abstrack;
+﻿using BusinessLayer.Abstract;
 using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Mvc;
 

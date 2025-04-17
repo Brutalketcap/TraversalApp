@@ -1,6 +1,6 @@
-﻿using BusinessLayer.Abstrack;
+﻿using BusinessLayer.Abstract;
 using BusinessLayer.Concrete;
-using BussinessLayer.Abstrack;
+using BussinessLayer.Abstract;
 using BussinessLayer.Concrete;
 using DataAccessLayer.Abstract;
 using DataAccessLayer.Concrete;
@@ -33,6 +33,10 @@ namespace BusinessLayer.Continer
 
             services.AddScoped<IGuideService, GuideManager>();
             services.AddScoped<IGuiedDal, EfGuideDal>();
+
+            services.AddScoped<IExcelService, ExcelManager>();
+
+;
         }
     }
 }

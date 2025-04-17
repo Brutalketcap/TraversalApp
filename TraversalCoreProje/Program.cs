@@ -1,8 +1,6 @@
-﻿using BusinessLayer.Abstrack;
+﻿using BusinessLayer.Abstract;
 using BusinessLayer.Concrete;
 using BusinessLayer.Continer;
-using BussinessLayer.Abstrack;
-using BussinessLayer.Concrete;
 using DataAccessLayer.Abstract;
 using DataAccessLayer.Concrete;
 using DataAccessLayer.EntitiyFramwork;

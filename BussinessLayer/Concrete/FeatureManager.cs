@@ -1,4 +1,4 @@
-﻿using BussinessLayer.Abstrack;
+﻿using BussinessLayer.Abstract;
 using DataAccessLayer.Abstract;
 using EntityLayer.Concrete;
 using System;
