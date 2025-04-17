@@ -1,6 +1,9 @@
-﻿using BussinessLayer.Abstrack;
+﻿using BusinessLayer.ValidationRules;
+using BussinessLayer.Abstrack;
 using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Mvc;
+using FluentValidation.Results;
+using DocumentFormat.OpenXml.Office.CustomUI;
 
 namespace TraversalCoreProje.Areas.Admin.Controllers
 {
@@ -23,22 +26,39 @@ namespace TraversalCoreProje.Areas.Admin.Controllers
         [HttpGet]
         public IActionResult AddGuide()
         {
-            var values = _guideService.TGetList();
-            return View(values);
+
+            return View(new Guide());
+            //var values = _guideService.TGetList();
+            //return View(values);
         }
 
         [HttpPost]
         public IActionResult AddGuide(Guide guide)
         {
-            _guideService.TAdd(guide);
-            return RedirectToAction("Index");
-            
+
+            GuideValidator validationRules = new GuideValidator();
+            ValidationResult result = validationRules.Validate(guide);
+            if (result.IsValid)
+            {
+
+                _guideService.TAdd(guide);
+                return RedirectToAction("Index");
+
+            }
+            else
+            {
+                foreach (var itme in result.Errors)
+                {
+                    ModelState.AddModelError(itme.PropertyName, itme.ErrorMessage);
+                }
+                return View();
+            }
         }
 
         [HttpGet]
         public IActionResult EditGuide(int id)
         {
-            var values= _guideService.TGetByID(id);
+            var values = _guideService.TGetByID(id);
             return View(values);
 
         }
@@ -46,7 +66,7 @@ namespace TraversalCoreProje.Areas.Admin.Controllers
         [HttpPost]
         public IActionResult EditGuide(Guide guide)
         {
-           _guideService.TUpdata(guide);
+            _guideService.TUpdata(guide);
             return RedirectToAction("Index");
         }
         public IActionResult ChangeToTrue(int id)

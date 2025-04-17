@@ -1,4 +1,4 @@
-using BusinessLayer.Abstrack;
+﻿using BusinessLayer.Abstrack;
 using BusinessLayer.Concrete;
 using BusinessLayer.Continer;
 using BussinessLayer.Abstrack;
@@ -12,6 +12,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
+using Serilog;
+using System.IO;
 using System.Security.Principal;
 using TraversalCoreProje.Models;
 
@@ -21,7 +23,18 @@ namespace TraversalCoreProje
     {
         public static void Main(string[] args)
         {
+            var path = Directory.GetCurrentDirectory();
+            Log.Logger = new LoggerConfiguration()
+                .MinimumLevel.Error()
+                .WriteTo.File($"{path}\\LogFile\\log.txt", rollingInterval: RollingInterval.Day)
+                .CreateLogger();
+
+
             var builder = WebApplication.CreateBuilder(args);
+
+            builder.Host.UseSerilog();
+            builder.Logging.ClearProviders();
+            builder.Logging.AddConsole();
 
             builder.Services.AddLogging(x =>
             {
@@ -57,14 +70,18 @@ namespace TraversalCoreProje
                 app.UseHsts();
             }
 
-            void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)
-            {
-                
-                var path = Directory.GetCurrentDirectory();
-                loggerFactory.AddFile($"{path}\\Logs\\log1.txt");
-            }
+           
 
-            app.UseStatusCodePagesWithReExecute("/ErrorPage/Error404/", "?code={0}");
+
+            //void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)
+            //{
+
+            //    var path = Directory.GetCurrentDirectory();
+            //    loggerFactory.AddFile($"{path}\\Logs\\log1.txt");
+            //}
+
+            //app.UseStatusCodePagesWithReExecute("/ErrorPage/Error404/", "?code={0}");
+
             app.UseHttpsRedirection();
             app.UseRouting();
             app.UseAuthentication();
