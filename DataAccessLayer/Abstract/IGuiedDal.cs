@@ -9,6 +9,9 @@ namespace DataAccessLayer.Abstract
 {
     public interface IGuiedDal: IGenericDal<Guide>
     {
+        void ChangeToTureByGuid(int id);
+        void ChangeToFalseByGuid(int id);
         
+
     }
 }

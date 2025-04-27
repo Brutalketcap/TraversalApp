@@ -35,8 +35,9 @@ namespace BusinessLayer.Continer
             services.AddScoped<IGuiedDal, EfGuideDal>();
 
             services.AddScoped<IExcelService, ExcelManager>();
+            services.AddScoped<IPdfService, PdfManger>();
 
-;
+            
         }
     }
 }
