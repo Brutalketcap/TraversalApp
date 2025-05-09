@@ -44,6 +44,6 @@ namespace TraversalCoreProje.Models
                 Description = "parolo en az 1 rakam içermelidir"
             };
         }
-        
+
     }
 }

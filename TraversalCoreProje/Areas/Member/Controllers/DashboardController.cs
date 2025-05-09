@@ -14,7 +14,7 @@ namespace TraversalCoreProje.Areas.Member.Controllers
             _userManager = userManager;
         }
 
-        
+
 
         public async Task<IActionResult> Index()
         {

@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
     <PackageReference Include="ClosedXML" Version="0.104.2" />
     <PackageReference Include="EPPlus" Version="8.0.1" />
     <PackageReference Include="FluentValidation" Version="11.11.0" />
@@ -38,8 +39,8 @@
 
   <ItemGroup>
     <Folder Include="Areas\Admin\Data\" />
-    <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Member\Data\" />
+    <Folder Include="CQRS\comands\" />
     <Folder Include="wwwroot\Logs\" />
     <Folder Include="wwwroot\pdfreports\" />
     <Folder Include="wwwroot\userimages\" />

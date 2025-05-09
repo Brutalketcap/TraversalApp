@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace TraversalCoreProje.ViewsComponents.Default
 {
-    public class _Testimonial: ViewComponent
+    public class _Testimonial : ViewComponent
     {
         TestimonialManager testimonialManager = new TestimonialManager(new EfTestimonialDal());
         public IViewComponentResult Invoke()

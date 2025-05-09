@@ -1,4 +1,5 @@
-﻿using EntityLayer.Concrete;
+﻿using DTOLayer.DTOs.AnnouncementDTOs;
+using EntityLayer.Concrete;
 using FluentValidation;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer.ValidationRules
 {
-    public class AnnouncementValidator : AbstractValidator<Announcement>
+    public class AnnouncementValidator : AbstractValidator<AnnouncementAddDto>
     {
         public AnnouncementValidator()
         {
@@ -19,7 +20,5 @@ namespace BusinessLayer.ValidationRules
             RuleFor(x => x.Title).MaximumLength(50).WithMessage("Lüften en az 50 karakter veri giriniz");
             RuleFor(x => x.Content).MaximumLength(500).WithMessage("Lüften en az 500 karakter veri giriniz");
         }
-    }
-    {
     }
 }

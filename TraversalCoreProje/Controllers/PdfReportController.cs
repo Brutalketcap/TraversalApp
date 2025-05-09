@@ -1,11 +1,6 @@
 ﻿using iTextSharp.text;
 using iTextSharp.text.pdf;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace TraversalCoreProje.Controllers
 {
@@ -64,5 +59,5 @@ namespace TraversalCoreProje.Controllers
             return File("/pdfreports/dosya2.pdf" + "application/pdf", "dosya2.pdf");
         }
     }
-    
+
 }

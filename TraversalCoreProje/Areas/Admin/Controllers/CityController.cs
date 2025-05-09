@@ -1,10 +1,7 @@
 ﻿using BussinessLayer.Abstract;
-using DataAccessLayer.Abstract;
 using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using System.Text.Json.Nodes;
-using TraversalCoreProje.Models;
 
 namespace TraversalCoreProje.Areas.Admin.Controllers
 {
@@ -49,14 +46,14 @@ namespace TraversalCoreProje.Areas.Admin.Controllers
 
         public IActionResult DeleteCity(int id)
         {
-            var values= _destinationServce.TGetByID(id);
+            var values = _destinationServce.TGetByID(id);
             _destinationServce.TDelete(values);
             return NoContent();
         }
 
         public IActionResult UpdateCity(Destination destination)
         {
-            
+
             _destinationServce.TUpdata(destination);
             var v = JsonConvert.SerializeObject(destination);
             return Json(v);

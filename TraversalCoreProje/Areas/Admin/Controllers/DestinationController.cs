@@ -1,6 +1,4 @@
 ﻿using BussinessLayer.Abstract;
-using BussinessLayer.Concrete;
-using DataAccessLayer.EntitiyFramwork;
 using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Mvc;
 
@@ -47,7 +45,7 @@ namespace TraversalCoreProje.Areas.Admin.Controllers
         [HttpGet]
         public IActionResult UpdateDestination(int id)
         {
-            var values= _destinationService.TGetByID(id);
+            var values = _destinationService.TGetByID(id);
             return View(values);
         }
         [HttpPost]

@@ -4,7 +4,7 @@ namespace TraversalCoreProje.ViewsComponents.MemberDashboard
 {
     public class _PlatformSetting : ViewComponent
     {
-        public  IViewComponentResult  Invoke()
+        public IViewComponentResult Invoke()
         {
             return View();
         }

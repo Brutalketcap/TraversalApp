@@ -9,5 +9,5 @@ namespace TraversalCoreProje.ViewsComponents.AdminDashboard
             return View();
         }
     }
-    
+
 }

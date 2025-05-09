@@ -7,11 +7,11 @@ namespace TraversalCoreProje.Controllers
 {
     public class CommentController : Controller
     {
-        CommentManager commentManager = new CommentManager(new EfCommentDal()); 
+        CommentManager commentManager = new CommentManager(new EfCommentDal());
         [HttpGet]
         public PartialViewResult AddComment(int id)
         {
-            ViewBag.i =id;
+            ViewBag.i = id;
             return PartialView();
         }
         [HttpPost]
@@ -19,8 +19,8 @@ namespace TraversalCoreProje.Controllers
         {
             p.CommentDate = Convert.ToDateTime(DateTime.Now.ToShortDateString());
             p.CommentState = true;
-            commentManager.TAdd(p); 
-            return RedirectToAction("Index","Destination");
+            commentManager.TAdd(p);
+            return RedirectToAction("Index", "Destination");
         }
     }
 }

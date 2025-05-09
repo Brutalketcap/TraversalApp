@@ -6,7 +6,7 @@ namespace TraversalCoreProje.Models
 {
     public class UserReqisterViewModle
     {
-        [Required(ErrorMessage= "Lütfen adınızı giriniz")] 
+        [Required(ErrorMessage = "Lütfen adınızı giriniz")]
         public string Name { get; set; }
 
         [Required(ErrorMessage = "Lütfen soyadınız giriniz")]
@@ -23,7 +23,7 @@ namespace TraversalCoreProje.Models
 
 
         [Required(ErrorMessage = "Lütfen şifrenizi tekrar giriniz")]
-        [Compare("Password",ErrorMessage ="sifreler uyumlu değil") ]
-        public string ConfirmPassword{ get; set; }
+        [Compare("Password", ErrorMessage = "sifreler uyumlu değil")]
+        public string ConfirmPassword { get; set; }
     }
 }

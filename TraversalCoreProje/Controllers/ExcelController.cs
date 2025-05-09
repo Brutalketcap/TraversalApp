@@ -1,11 +1,7 @@
 ﻿using BusinessLayer.Abstract;
-using BussinessLayer.Concrete;
 using ClosedXML.Excel;
 using DataAccessLayer.Concrete;
-using DocumentFormat.OpenXml.Spreadsheet;
 using Microsoft.AspNetCore.Mvc;
-using NuGet.Packaging;
-using OfficeOpenXml;
 using TraversalCoreProje.Models;
 namespace TraversalCoreProje.Controllers
 {
@@ -45,7 +41,7 @@ namespace TraversalCoreProje.Controllers
         {
 
             return File(_excelService.ExcelList(DestinationList()), "application/vnd.openxmlformats-officedocuments.spreadsheetml.sheet", "YeniExcel.xlsx");
-            
+
             /*
             (ExcelPackage.License.SetLicense(LicenseType.NonCommercial);
 

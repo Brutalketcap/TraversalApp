@@ -55,7 +55,7 @@ namespace TraversalCoreProje.Areas.Member.Controllers
             if (result.Succeeded)
             {
                 return RedirectToAction("SignIn", "Login", new { area = "" });
-                
+
             }
             else
             {

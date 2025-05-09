@@ -9,7 +9,7 @@ namespace TraversalCoreProje.Areas.Member.Controllers
     [Area("Member")]
     public class DestinationController : Controller
     {
-        DestinationManager destinationManager=new DestinationManager(new EfDestinationDal());
+        DestinationManager destinationManager = new DestinationManager(new EfDestinationDal());
         public IActionResult Index()
         {
             var values = destinationManager.TGetList();

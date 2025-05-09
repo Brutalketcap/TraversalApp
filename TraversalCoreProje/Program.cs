@@ -1,18 +1,11 @@
-﻿using BusinessLayer.Abstract;
-using BusinessLayer.Concrete;
-using BusinessLayer.Continer;
-using DataAccessLayer.Abstract;
+﻿using BusinessLayer.Continer;
 using DataAccessLayer.Concrete;
-using DataAccessLayer.EntitiyFramwork;
 using EntityLayer.Concrete;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Authorization;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
 using Serilog;
-using System.IO;
-using System.Security.Principal;
+using TraversalCoreProje.CQRS.Handers.DestinationHanders;
 using TraversalCoreProje.Models;
 
 namespace TraversalCoreProje
@@ -21,35 +14,44 @@ namespace TraversalCoreProje
     {
         public static void Main(string[] args)
         {
+
+            
             var path = Directory.GetCurrentDirectory();
             Log.Logger = new LoggerConfiguration()
                 .MinimumLevel.Error()
                 .WriteTo.File($"{path}\\LogFile\\log.txt", rollingInterval: RollingInterval.Day)
                 .CreateLogger();
 
-
             var builder = WebApplication.CreateBuilder(args);
 
+            // Log yapılandırması
             builder.Host.UseSerilog();
             builder.Logging.ClearProviders();
             builder.Logging.AddConsole();
 
+            builder.Services.AddScoped<GetAllDestinationQueryHanders>();     ///---
+
+
             builder.Services.AddLogging(x =>
             {
-
                 x.ClearProviders();
                 x.SetMinimumLevel(LogLevel.Debug);
                 x.AddDebug();
             });
 
 
+            // DbContext ve Identity ayarları
             builder.Services.AddDbContext<Context>();
-            builder.Services.AddIdentity<AppUser, AppRole>().AddErrorDescriber<CustomIdentityValidator>().AddEntityFrameworkStores<Context>();
+            builder.Services.AddIdentity<AppUser, AppRole>()
+                .AddErrorDescriber<CustomIdentityValidator>()
+                .AddEntityFrameworkStores<Context>();
 
+            builder.Services.AddHttpClient();
 
+            // Bağımlılıkları ekle
             builder.Services.ContainerDependences();
 
-
+            // Kimlik doğrulama filtresi
             builder.Services.AddControllersWithViews(opt =>
             {
                 var policy = new AuthorizationPolicyBuilder()
@@ -58,27 +60,22 @@ namespace TraversalCoreProje
                 opt.Filters.Add(new AuthorizeFilter(policy));
             });
 
+            // AutoMapper ve FluentValidation yapılandırması
+            builder.Services.AddAutoMapper(typeof(Program));
+            builder.Services.CustomerValidator(); 
+
+            // FluentValidation'ı MVC ile entegre et
+            builder.Services.AddControllersWithViews()
+                .AddFluentValidation();
+
             var app = builder.Build();
 
-            //Configure the HTTP request pipeline.
+            // Hata yönetimi ve HSTS ayarları
             if (!app.Environment.IsDevelopment())
             {
                 app.UseExceptionHandler("/Home/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-
-           
-
-
-            //void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)
-            //{
-
-            //    var path = Directory.GetCurrentDirectory();
-            //    loggerFactory.AddFile($"{path}\\Logs\\log1.txt");
-            //}
-
-            //app.UseStatusCodePagesWithReExecute("/ErrorPage/Error404/", "?code={0}");
 
             app.UseHttpsRedirection();
             app.UseRouting();
@@ -87,11 +84,10 @@ namespace TraversalCoreProje
 
             app.MapStaticAssets();
 
-
+            // Route ayarları
             app.MapControllerRoute(
-              name: "areas",
-              pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
-
+                name: "areas",
+                pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
 
             app.MapControllerRoute(
                 name: "default",
@@ -100,7 +96,7 @@ namespace TraversalCoreProje
 
             app.Run();
 
-
+            // Endpoints yapılandırması
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
@@ -112,6 +108,7 @@ namespace TraversalCoreProje
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
+
 
 
 

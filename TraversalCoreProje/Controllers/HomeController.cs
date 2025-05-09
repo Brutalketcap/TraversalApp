@@ -1,5 +1,5 @@
-using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using System.Diagnostics;
 using TraversalCoreProje.Models;
 
 namespace TraversalCoreProje.Controllers
@@ -22,7 +22,7 @@ namespace TraversalCoreProje.Controllers
 
         public IActionResult Privacy()
         {
-            DateTime d = Convert.ToDateTime( DateTime.Now.ToLongDateString());
+            DateTime d = Convert.ToDateTime(DateTime.Now.ToLongDateString());
             _logger.LogInformation(d + "Privacy sayfasý çaðýrýldý");
             return View();
         }

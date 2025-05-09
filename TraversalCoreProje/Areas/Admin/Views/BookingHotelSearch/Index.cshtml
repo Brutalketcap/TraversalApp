@@ -1,0 +1,72 @@
+﻿@model IEnumerable<BookingHotelSearchViewModel.Result>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    int count = 0;
+    double score = 0;
+    string scoreWord = "";
+}
+
+<h1>Booking Otal Rezervasyon Sayfası</h1>
+
+<h3>Arama Yapılan Şehir: Paris/Fransa</h3>
+
+<table class="table table-striped">
+    <tr>
+        <th>#</th>
+        <th>Otel Adı</th>
+        <th>Otel Puan</th>
+        <th>Değerlendirme Metni</th>
+        <th>Detaylar</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        count++;
+        <tr>
+            <td>@count</td>
+            <td>@item.hotel_name</td>
+            <td>
+                @{
+                    double calculatedScore = 0;
+                    if (double.TryParse(item.review_score.ToString(), out calculatedScore))
+                    {
+                        calculatedScore = calculatedScore / 10;
+                    }
+                }
+                @calculatedScore.ToString("0.0")
+            </td>
+            <td>
+                @{
+                    string reviewWord = item.review_score_word;
+
+                    if (reviewWord == "Very good")
+                    {
+                        reviewWord = "Çok iyi";
+                    }
+                    else if (reviewWord == "Good")
+                    {
+                        reviewWord = "İyi";
+                    }
+                    else if (reviewWord == "Okay")
+                    {
+                        reviewWord = "İdare Eder";
+                    }
+                    else if (reviewWord == "Pleasant")
+                    {
+                        reviewWord = "Hoş";
+                    }
+                    else if (reviewWord == "Exceptional")
+                    {
+                        reviewWord = "Olağanüstü";
+                    }
+                    else if (reviewWord == "Fabulous")
+                    {
+                        reviewWord = "Harika";
+                    }
+                }
+                @reviewWord
+            </td>
+            <td><a href="" class="btn btn-outline-dark">Detaylar</a></td>
+        </tr>
+    }
+</table>

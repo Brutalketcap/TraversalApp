@@ -1,9 +1,8 @@
 ﻿using BusinessLayer.ValidationRules;
 using BussinessLayer.Abstract;
 using EntityLayer.Concrete;
-using Microsoft.AspNetCore.Mvc;
 using FluentValidation.Results;
-using DocumentFormat.OpenXml.Office.CustomUI;
+using Microsoft.AspNetCore.Mvc;
 
 namespace TraversalCoreProje.Areas.Admin.Controllers
 {
@@ -80,7 +79,7 @@ namespace TraversalCoreProje.Areas.Admin.Controllers
         public IActionResult ChangeToTrue(int id)
         {
             _guideService.TChangeToTureByGuid(id);
-            return RedirectToAction("Index","Guide",new {area="Admin"});
+            return RedirectToAction("Index", "Guide", new { area = "Admin" });
         }
 
         [Route("ChangeToFalse/{id}")]

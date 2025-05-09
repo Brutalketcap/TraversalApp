@@ -2,7 +2,7 @@
 
 namespace TraversalCoreProje.ViewsComponents.AdminDashboard
 {
-    public class _AdminDashboardHeader:ViewComponent
+    public class _AdminDashboardHeader : ViewComponent
     {
         public IViewComponentResult Invoke()
         {
