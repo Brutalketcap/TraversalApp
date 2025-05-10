@@ -2,6 +2,7 @@
 using DataAccessLayer.Concrete;
 using EntityLayer.Concrete;
 using FluentValidation.AspNetCore;
+using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Serilog;
@@ -14,8 +15,8 @@ namespace TraversalCoreProje
     {
         public static void Main(string[] args)
         {
-
             
+
             var path = Directory.GetCurrentDirectory();
             Log.Logger = new LoggerConfiguration()
                 .MinimumLevel.Error()
@@ -30,6 +31,12 @@ namespace TraversalCoreProje
             builder.Logging.AddConsole();
 
             builder.Services.AddScoped<GetAllDestinationQueryHanders>();     ///---
+            builder.Services.AddScoped<GetDestinationByIDQueryHandler>();
+            builder.Services.AddScoped<CreateDestinationCommandHandler>();
+            builder.Services.AddScoped<RemoveDestinationCommandHandler>();
+            builder.Services.AddScoped<UpdateDestinationCommandHandler>();
+
+            builder.Services.AddMediatR(typeof(Program).Assembly);
 
 
             builder.Services.AddLogging(x =>

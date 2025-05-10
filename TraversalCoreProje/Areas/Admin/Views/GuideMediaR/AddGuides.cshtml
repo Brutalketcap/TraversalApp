@@ -1,0 +1,19 @@
+﻿@model CreateGuideCommand
+@{
+    ViewData["Title"] = "AddGuides";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Yeni Rehber ekleme Sayfasi</h1>
+
+<form method="post">
+    <labe>Rehber Adı</labe>
+    <input type="text" class="form-control" asp-for="Name">
+    <br>
+    <labe>Rehber Açıklama</labe>
+    <input type="text" class="form-control" asp-for="Description">
+    <br>
+    <
+    <button type="submit" class="btn btn-primary">Rehbere Kaydet</button>
+</form>
+
