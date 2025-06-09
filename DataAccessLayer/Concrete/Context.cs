@@ -14,7 +14,7 @@ namespace DataAccessLayer.Concrete
         
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=.;Database=TraversalDB;Trusted_Connection=True;TrustServerCertificate=true");
+            optionsBuilder.UseSqlServer("Server=.;Database=TraversalDBsssw;Trusted_Connection=True;TrustServerCertificate=true");
         }
 
         public DbSet<About> Abouts { get; set; }
@@ -31,6 +31,7 @@ namespace DataAccessLayer.Concrete
         public DbSet<Comment> Commnets { get; set; }
         public DbSet<Reservation> Reservations { get; set; }
         public DbSet<Announcement> Announcements { get; set; }
+        public DbSet<Account> Accounts { get; set; }
     }
 
 }
