@@ -17,7 +17,7 @@ namespace DataAccessLayer.Concrete
             optionsBuilder.UseSqlServer("Server=.;Database=TraversalDBsssw;Trusted_Connection=True;TrustServerCertificate=true");
         }
 
-        public DbSet<About> Abouts { get; set; }
+        
         public DbSet<About2> About2s { get; set; }
         public DbSet<Contact> Contacts { get; set; }
         public DbSet<ContactUs> ContactUs { get; set; }
