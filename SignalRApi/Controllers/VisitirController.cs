@@ -7,16 +7,21 @@ namespace SignalRApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+
     public class VisitirController : ControllerBase
     {
         private readonly VisitorService _visitorService;
+
         public VisitirController(VisitorService visitorService)
         {
             _visitorService = visitorService;
         }
+
         [HttpGet]
         public IActionResult CreatVisitor()
         {
+
+
             Random random = new Random();
             Enumerable.Range(1, 10).ToList().ForEach(x =>
             {
@@ -31,10 +36,12 @@ namespace SignalRApi.Controllers
                     _visitorService.SaveVisitor(newVisitor).Wait();
                     System.Threading.Thread.Sleep(1000);
                 }
-                
+
+
             });
             return Ok("Ziyaretçiler başarı bir şekilde eklendi");
 
         }
+
     }
 }

@@ -165,6 +165,12 @@ namespace TraversalCoreProje
                 opt.Filters.Add(new AuthorizeFilter(policy));
             });
 
+            builder.Services.ConfigureApplicationCookie(options =>
+            {
+                options.LoginPath = "/Login/SingIn";
+            });
+
+
             // AutoMapper ve FluentValidation yapılandırması
             builder.Services.AddAutoMapper(typeof(Program));
             builder.Services.CustomerValidator(); 

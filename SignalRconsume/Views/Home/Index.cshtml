@@ -1,0 +1,26 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@section Scripts
+{
+
+@* signalr.min.js gelicek *@
+    <script src="text\javascript">
+        $(document).ready(() =>
+          {
+              var connection= new signalR.HubconnectionBuilder().withUrl("http://localhost:5001/VisithorHub").builder();
+              $("#connectionStatus").text(connection.connectionState);
+              connection.start().then(()=>{
+                  $("#connectionStatus").text(connection.connectionState);
+              }).catch((Err)=>{console.log(err)});
+          })
+    </script>
+}
+
+<div class="container">
+    <br>
+    <div class="alert alert-warning">
+        bağlantinizın durumu:<b id="connectionStatus">bağlantı yok</b>"
+    </div>
+</div>
