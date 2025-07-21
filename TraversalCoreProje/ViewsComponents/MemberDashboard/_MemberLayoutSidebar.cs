@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace TraversalCoreProje.Views.MemberLayoutPartial
+namespace TraversalCoreProje.ViewsComponents.MemberDashboard
 {
     public class _MemberLayoutSidebar: ViewComponent
     {
