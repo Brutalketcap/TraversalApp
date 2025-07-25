@@ -25,7 +25,10 @@ Kullanılan Teknolojiler
 - Mediatr
 - SignalR
 
+ 
+ Sitenin Görselleri
 
+<img width="1259" height="4865" alt="localhost_7173_Default_Index" src="https://github.com/user-attachments/assets/c402c7f0-adc6-465a-a77b-7967c1734b84" />
 
 <img width="1259" height="2838" alt="localhost_7173_Destination_Index_" src="https://github.com/user-attachments/assets/7e87ae5f-1ba0-4f27-b216-30db265e5bcb" />
 
