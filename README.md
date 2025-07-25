@@ -24,10 +24,11 @@ Kullanılan Teknolojiler
 - CQRS Design Pattern
 - Mediatr
 - SignalR
+  
+<img width="1259" height="3781" alt="localhost_7173_Destination_DestinationDetails_10 (1)" src="https://github.com/user-attachments/assets/8663b28e-bffa-4055-92b1-e3c645a3d064" />
 
 
 
-<img width="1259" height="4865" alt="localhost_7173_Default_Index" src="https://github.com/user-attachments/assets/80b9a173-82fd-45ac-8933-61fc423d512b" />
 <img width="1259" height="2838" alt="localhost_7173_Destination_Index_" src="https://github.com/user-attachments/assets/7e87ae5f-1ba0-4f27-b216-30db265e5bcb" />
 <img width="1259" height="1446" alt="localhost_7173_Guide_Index_" src="https://github.com/user-attachments/assets/4bdde023-8731-4d3d-be07-a147e6da1cb6" />
 <img width="1259" height="1884" alt="localhost_7173_Contact_Index_" src="https://github.com/user-attachments/assets/30879821-845e-4b55-8e04-af96eed761d8" />
