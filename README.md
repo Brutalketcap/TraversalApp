@@ -36,7 +36,7 @@ Kullanılan Teknolojiler
 
 <img width="1259" height="1884" alt="localhost_7173_Contact_Index_" src="https://github.com/user-attachments/assets/30879821-845e-4b55-8e04-af96eed761d8" />
 
-<img width="1259" height="3781" alt="localhost_7173_Destination_DestinationDetails_10" src="https://github.com/user-attachments/assets/64c4c186-8cd7-4ec9-ae74-e9006f6b354c" />
+<img width="1259" height="3781" alt="localhost_7173_Destination_DestinationDetails_10 (2)" src="https://github.com/user-attachments/assets/e650fc06-12f4-47af-8b3f-4a837e16f533" />
 
 <img width="1919" height="944" alt="Ekran görüntüsü 2025-07-25 012505" src="https://github.com/user-attachments/assets/c1ecb1a0-a394-4b86-a723-a0a88c08238a" />
 
